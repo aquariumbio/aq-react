@@ -1,8 +1,12 @@
 import React from 'react';
 import Login from '../components/Login';
-import Logout from '../components/Logout'
-import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography';
+import Home from '../components/Home';
+import User from '../components/User';
+import Plan from '../components/Plan';
+import Manager from '../components/Manager';
+import Samples from '../components/Samples';
+import Developer from '../components/Developer';
+import Designer from '../components/Designer';
 
 // Each logical "route" has two components, one for
 // the mainNavigation and one for the main area. We want to
@@ -19,7 +23,7 @@ const routes = [
     exact: true,
     forceRefresh: true,
     mainNavigation: () => <div>home!</div>,
-    main: () => <Typography variant="h1">Home</Typography>
+    main: () => <Home />
 
   },
   {
@@ -32,62 +36,37 @@ const routes = [
     path: "/user",
     exact: true,
     mainNavigation: () => <div>User!</div>,
-    main: () => (
-      <Container className="App" disableGutters={false} >
-        <Typography variant="h1">User</Typography>
-        <Logout/>
-      </Container>
-    )
+    main: () => <User />
   },
   {
     path: "/designer",
     exact: true,
     mainNavigation: () => <div>designer!</div>,
-    main: () => (
-      <Container className="App" disableGutters={false} >
-        <Typography variant="h1">designer</Typography>
-      </Container>
-    )
+    main: () => <Designer />
   },
   {
-    path: "/plans",
+    path: "/plan",
     exact: true,
     mainNavigation: () => <div>plans!</div>,
-    main: () => (
-      <Container className="App" disableGutters={false} >
-        <Typography variant="h1">plans</Typography>
-      </Container>
-    )
+    main: () => <Plan />
   },
   {
     path: "/manager",
     exact: true,
     mainNavigation: () => <div>manager!</div>,
-    main: () => (
-      <Container className="App" disableGutters={false} >
-        <Typography variant="h1">manager</Typography>
-      </Container>
-    )
+    main: () => <Manager />
   },
   {
     path: "/samples",
     exact: true,
     mainNavigation: () => <div>samples!</div>,
-    main: () => (
-      <Container className="App" disableGutters={false} >
-        <Typography variant="h1">samples</Typography>
-      </Container>
-    )
+    main: () => <Samples />
   },
   {
     path: "/developer",
     exact: true,
     mainNavigation: () => <div>developer!</div>,
-    main: () => (
-      <Container className="App" disableGutters={false} >
-        <Typography variant="h1">developer</Typography>
-      </Container>
-    )
+    main: () => <Developer/>
   }
 ];
 

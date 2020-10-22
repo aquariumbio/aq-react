@@ -1,7 +1,9 @@
 import React , { Fragment, useState } from 'react';
 import './App.css';
-import MainMenu from '../MainMenu';
-import NavTabs from '../NavTabs';
+import Home from '../Home';
+
+import TopLeftHamburgerMenu from '../TopLeftHamburgerMenu';
+import NavTabs from '../MainNavigation';
 import routes from '../../utilities/routes';
 
 import Container from '@material-ui/core/Container';
@@ -9,6 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import { Switch, Route, Redirect } from "react-router-dom";
+import MainNavigation from '../MainNavigation';
 
 const App = () => {
   const [activeSession, setActitveSession] = useState(!!localStorage.getItem('token'));
@@ -25,17 +28,12 @@ const App = () => {
         but only only if they are logged in, i.e. they have an active token */
         activeSession &&
           <Fragment>
-            <AppBar position="static" >
-              <Toolbar>
-                <MainMenu/>
-                <NavTabs/> 
-              </Toolbar>
-            </AppBar>
+            <MainNavigation />
           </Fragment>
       }
 
       {/* render only one route at time using Switch */}
-      <Switch> 
+      {/* <Switch> 
         {
           routes.map((route, index) => (
             <Route
@@ -46,6 +44,16 @@ const App = () => {
             />
           ))
         }
+      </Switch>
+       */}
+
+      <Switch>
+        <Redirect exact from="/" to="/home" />
+        <Route
+          exact
+          path="/:page?"
+          render={(props) => <Home {...props} />}
+        />
       </Switch>
     </Container>
   );
