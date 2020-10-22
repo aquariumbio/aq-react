@@ -3,6 +3,7 @@ import {IconButton, Menu, MenuItem} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu';
 
+// LEFT SIDE NAVIGATION HAMBURGER MENU
 
 // Custom styling for material-UI components
 const useStyles = makeStyles((theme) => ({
@@ -14,8 +15,6 @@ const useStyles = makeStyles((theme) => ({
 export default function(MainMenu) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(false);
-
-    
     
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
