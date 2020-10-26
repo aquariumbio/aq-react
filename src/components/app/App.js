@@ -19,17 +19,14 @@ const App = () => {
   return (
     <Container className="App" disableGutters={false} >
 
-      { /* Users cannot interact with the app if they do not have a token */
-        !activeSession &&
-           <Redirect to="/login" />
-      }
+
 
       { /* Users should see the top navigation regardless of route
         but only only if they are logged in, i.e. they have an active token */
-        activeSession &&
-          <Fragment>
-            <MainNavigation />
-          </Fragment>
+        // activeSession &&
+        //   <Fragment>
+        //     <MainNavigation />
+        //   </Fragment>
       }
 
       {/* render only one route at time using Switch */}
@@ -48,11 +45,14 @@ const App = () => {
        */}
 
       <Switch>
-        <Redirect exact from="/" to="/home" />
+      { /* Users cannot interact with the app if they do not have a token */
+        !activeSession &&
+           <Redirect to="/login" />
+      }
         <Route
           exact
           path="/:page?"
-          render={(props) => <Home {...props} />}
+          render={(props) => <MainNavigation {...props} />}
         />
       </Switch>
     </Container>

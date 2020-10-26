@@ -32,7 +32,7 @@ const Login = (props) => {
       if (response.data.status === 200 && response.data.data.token) {
         setLoginError()
         setToken(response.data.data.token)
-        history.push("/");
+        history.push("/home");
         window.location.reload();
 
       }
@@ -44,7 +44,7 @@ const Login = (props) => {
   }
 
   if (localStorage.getItem("token")) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
   return (
     <Fragment>

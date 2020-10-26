@@ -19,7 +19,7 @@ import Designer from '../components/Designer';
 // order they would appear in a <Switch>.
 const routes = [
   {
-    path: "/",
+    path: "/home",
     exact: true,
     forceRefresh: true,
     mainNavigation: () => <div>home!</div>,

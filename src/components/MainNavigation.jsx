@@ -21,6 +21,7 @@ function a11yProps(index) {
 }
 
 const MainNavigation = (props) => {
+  console.log(props)
   const { match, history } = props;
   const { params } = match;
   const { page } = params;
