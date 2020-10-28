@@ -10,8 +10,29 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
+Cypress.Commands.add("login", () => {
+  let login = 'marikoa';
+  let password = 'MtXzwmLYTDq5Gucr';
+
+  cy.request({
+    method: 'POST',
+    url: `http://localhost:3001/api/v3/user/sign_in?login=${login}&password=${password}`
+  })
+  .then((resp) => {
+    window.localStorage.setItem('token', resp.body.data.token)
+  })
+})
+Cypress.Commands.add("logout", () => {
+  let token = window.localStorage.getItem('token');
+
+  cy.request({
+    method: 'POST',
+    url: `http://localhost:3001/api/v3/user/sign_out?token=${token}`
+  })
+  .then((resp) => {
+    window.localStorage.clear();
+  })
+})
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
