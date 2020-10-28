@@ -1,55 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import ReactGA from "react-ga";
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import App from './components/app/App';
+import axios from 'axios';
 
+axios.defaults.baseURL = 'http://localhost:3001/api/v3/';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router basename={"aquarium/v3/"}>
+      <CssBaseline />
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// Google Analytics resources
-export const initGA = () => {       
-  ReactGA.initialize('UA-177438863-1'); // GA tracking id
-}
-
-export const GApageView = (page) => {   
-  ReactGA.pageview(page);   
-}
-
-export const GAmodalView = (modal) => {
-  ReactGA.modalview(modal);
-}
-
-export const GAevent = (categoryName, eventName) => {
-  ReactGA.event({       
-      category: categoryName,  // Required
-      action: eventName,       // Required
-      label: 'labelName',       
-      value: 10,       
-      nonInteraction: false     
-  });   
-}
-
-export const GAtiming = (categoryName, variableName, valueNum) => {
-  ReactGA.timing({       
-      category: categoryName,       
-      variable: variableName,       
-      value: valueNum
-  });
-};
-
-export const GAexception = (detail) => {
-  ReactGA.exception({ description: detail });
-};
-// TODO: Set up custom exceptions page in GA admin
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
